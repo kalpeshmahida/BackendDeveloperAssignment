@@ -9,6 +9,10 @@ use Neo\HttpClient\HttpClientInterface;
 use Neo\HttpClient\GuzzleHttpClient;
 use Neo\Exception\ApiException;
 
+/**
+ * Class Client
+ * @package Neo
+ */
 class Client
 {
     /**
@@ -46,6 +50,11 @@ class Client
      */
     private $lastResponse;
 
+    /**
+     * Client constructor.
+     * @param $apiKey
+     * @param HttpClientInterface|null $httpClient
+     */
     public function __construct($apiKey, HttpClientInterface $httpClient = null)
     {
         $this->apiKey = $apiKey;
@@ -53,6 +62,8 @@ class Client
     }
 
     /**
+     * Make a get request
+     *
      * @param string $uri
      * @param array $params
      *
@@ -64,6 +75,8 @@ class Client
     }
 
     /**
+     * Send http request
+     *
      * @param string $method
      * @param string $uri
      * @param mixed $body
@@ -82,7 +95,7 @@ class Client
         } catch (GuzzleException $e) {
             throw new ApiException($e->getMessage(), $e->getCode());
         }
-        //$this->validateResponse($this->lastResponse);
+        // @TODO: validate received response
 
         return $this->lastResponse;
     }
@@ -95,6 +108,15 @@ class Client
         return new GuzzleHttpClient();
     }
 
+    /**
+     * Enhance options by adding API-KEY in query param
+     * 
+     * @param mixed $body
+     * @param array $query
+     * @param array $headers
+     * @param array $options
+     * @return array
+     */
     private function enhanceOptions($body = null, array $query = [], array $headers = [], array $options = [])
     {
         // Add api key

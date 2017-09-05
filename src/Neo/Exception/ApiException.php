@@ -2,6 +2,10 @@
 
 namespace Neo\Exception;
 
+/**
+ * Class ApiException
+ * @package Neo\Exception
+ */
 class ApiException extends \RuntimeException
 {
     private $apiError;
@@ -18,6 +22,7 @@ class ApiException extends \RuntimeException
         parent::__construct($message, $code);
         $this->apiError = $apiError;
     }
+
     /**
      * @return mixed|null
      */
