@@ -33,8 +33,11 @@ Run this command specifying API-KEY to retrive the data from the last 3 days fro
 
 **NOTE:** It is assumed parameters.yml is configured with mysql details and specified database in details is created already.
 
+It is important to run below command to populate data in database before proceeding further
+
 ```bash
 
+$ bin/console  doctrine:schema:create
 $ php bin/console neo:feed API-KEY
 
 ```
