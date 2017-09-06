@@ -91,6 +91,15 @@ $ phpunit tests/ApiBundle/Controller/AsteroidControllerTest.php
 
 ```
 
+TODO
+----
+* Exception handling
+* Returning proper error responses
+* `/neo/hazardous` API - using pagination
+* More generic feed command which can be used to fetch feed by specifying date range.
+* A command to retrive / fetch more historic data from nasa api, to make analysis on local data real and accurate
+* Unit testing for Neo SDK
+
 What's inside?
 ---------------
 
